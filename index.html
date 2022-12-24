@@ -35,8 +35,6 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
 
-      document.getElementById('dashboard').style.display="none"
-
       document.getElementById('login').addEventListener('click', GoogleLogin)
 
       let provider = new firebase.auth.GoogleAuthProvider()
