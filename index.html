@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+	<link rel="stylesheet" href="style.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Firebase Auth: Google - TechFerment</title>
+    <title>Signup or Login</title>
   </head>
-  <body>
-    <h1>Welcome : Firebase Auth: Google</h1>
-    <p>Raihan: Firebase For Web</p>
+  <body background="cool.jpg">
 
-    <div id="LoginScreen">
-      <button id="login">Login with Google</button>
-    </div>
-
-    <div id="dashboard">
-      <div id="userDetails"></div>
-      <button id="logout">Logout</button>
+    <div class="LoginScreen">
+      <button class="login">Login with Google</button>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -44,7 +38,6 @@
       document.getElementById('dashboard').style.display="none"
 
       document.getElementById('login').addEventListener('click', GoogleLogin)
-      document.getElementById('logout').addEventListener('click', LogoutUser)
 
       let provider = new firebase.auth.GoogleAuthProvider()
 
@@ -60,13 +53,6 @@
         })
       }
 
-      function showUserDetails(user){
-        document.getElementById('userDetails').innerHTML = `
-          <img src="${user.photoURL}" style="width:10%">
-          <p>Name: ${user.displayName}</p>
-          <p>Email: ${user.email}</p>
-        `
-      }
 
       function checkAuthState(){
         firebase.auth().onAuthStateChanged(user=>{
@@ -79,6 +65,12 @@
           }
         })
       }
+
+      firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+        location.replace("index.html");
+    }
+})
 
       function LogoutUser(){
         console.log('Logout Btn Call')
